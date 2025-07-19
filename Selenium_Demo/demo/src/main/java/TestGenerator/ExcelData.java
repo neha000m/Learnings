@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -26,6 +27,7 @@ public class ExcelData {
         FileInputStream fis = new FileInputStream("/Users/Saurabh/Desktop/Users.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         int sheeets=workbook.getNumberOfSheets();
+        DataFormatter formatter = new DataFormatter();
 
         for( int i=0; i<sheeets; i++) {
 
@@ -48,6 +50,7 @@ List<String> lis=new ArrayList<>();
                   }
                   for(int j=0;i<currentRow.getLastCellNum();i++) {
                       if(currentRow.getCell(i) != null) {
+                        
                           
                  username = currentRow.getCell(i).getStringCellValue();
                  password = currentRow.getCell(i+1).getStringCellValue();
@@ -64,4 +67,4 @@ List<String> lis=new ArrayList<>();
         workbook.close();
         fis.close();
     }   
-}
+}}
